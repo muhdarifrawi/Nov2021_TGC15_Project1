@@ -12,13 +12,23 @@ async function dataSet() {
                 fields:"date,station,daily_rainfall_total, mean_temperature, mean_wind_speed"
             }
         })
-      console.log(response.data.result.records);
+        let historicalData = response.data.result.records;
+        // console.log(historicalData);
+        return filterYearMth(historicalData);
     } catch (error) {
       console.error(error);
     }
   }
 
-dataSet();
-
+function filterYearMth(data){
+    const  yearMth = data.filter(function(i){
+        if(i.date.slice(0,7)=="2010-06"){
+            return i
+        }
+        // return i.date
+    })
+    console.log("look here", yearMth);
+    return yearMth
+}   
 
 
