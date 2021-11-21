@@ -1,7 +1,4 @@
-const weather2h = "";
-const weather24h = "";
-const weather4day= "";
-const weatherHistory = "https://data.gov.sg/api/action/datastore_search";
+const weatherHistory = "https://data.gov.sg/api/action/datastore_search?";
 
 let yearMthValue = "2010-06";
 
@@ -9,7 +6,7 @@ let yearMth;
 
 async function dataSet() {
     try {
-      const response = await axios.get('https://data.gov.sg/api/action/datastore_search?',
+      const response = await axios.get(weatherHistory,
         {   
             params: { 
                 resource_id: '1e478275-0746-483d-9783-2f40a3535910', // the resource id
@@ -24,6 +21,10 @@ async function dataSet() {
         
     } catch (error) {
       console.error(error);
+      document.getElementById("content").innerHTML = `
+        <div class="alert alert-danger" role="alert">
+          Error fetching data.
+        </div>`;
     }
   }
 
