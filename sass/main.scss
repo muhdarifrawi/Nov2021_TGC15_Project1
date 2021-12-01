@@ -1,6 +1,10 @@
 // declare values before importing the bootstraps sass
 $primary:#ED820E;
 
+.weather-img{
+    height:30vh;
+    image-rendering: pixelated;
+}
 
 // import bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap.scss"

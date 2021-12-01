@@ -1,7 +1,0 @@
-<svg id="hazy" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="7" viewBox="0 0 27 7">
-  <defs>
-    <image id="image" width="27" height="3" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAADCAYAAABiUXSjAAAAT0lEQVQYlWP8//8/AzKIyS+BCyyZ2MPIgAaQ5RkYGBiXTOzBqR8kDzUHzGFBNwymAKoRZilWeRwApzxjdF4xhkuQfIbhU5gDkABx+hkYGADMQCBCumlclQAAAABJRU5ErkJggg=="/>
-  </defs>
-  <use xlink:href="#image"/>
-  <use y="4" xlink:href="#image"/>
-</svg>
