@@ -1,0 +1,10 @@
+<svg id="partly_cloudy_day_" data-name="partly cloudy (day)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="22" viewBox="0 0 27 22">
+  <g id="sun">
+    <image id="sun_base" x="9" width="17" height="21" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAVCAYAAACg/AXsAAAAlUlEQVQ4je2UUQrDIAyG/2Rl9GFXmBfsdeYFe4cxtxdLhJSiFm36uP4gBvnzEZWEPq8nVOM0I3gX0RZtHUMF8ANwb2DER5IjYpQVtAArKHiXAoox9l5hTyRvcgaQxGcBF+QfIG/Om8mgh1ZiBaU8zg+OAnJIL+hb+KSLLUuGmeaZfkfniO6swVHAVqmSHlDw7lb1AVgAO2lbS1lI1g4AAAAASUVORK5CYII="/>
+    <image id="sun_highlight" x="10" y="1" width="15" height="15" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAZElEQVQokWP8flqWAQv4j0WMkcPkEcOPM3IIATTN2DRhGAJjMJGoEUUdE7oAKQYwkaERbgATEYpwglHNZGhmJlMvNwsDA8M/aJIjJb7BSRTZ2fA0S4xGdM0wCVyGcKDIMTAwAADLhBDxOCKymQAAAABJRU5ErkJggg=="/>
+  </g>
+  <g id="cloud">
+    <image id="cloud_base" y="2" width="27" height="20" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAUCAYAAAB8gkaAAAAA3ElEQVRIib2Vyw6EIAxFW5ztLGYx3za/KL82C0lka8KkRAhPqYxyk/oKcnqRVjDGNGNe1mzMvKxTcl8cFwYLdiaOgGiJg/ToxUilNwCYgkdIh8/rWX2n6UwqTacvALyZeWANeOhsB51dZ+NcZlmUnO2QHpCft+QuchZA/gFBzZ131rlkHHmXSHVxgZOWLFAMAPn5xQCQlVTaCMa4yzQcVizAG4TO2d1AOz+3zlwyPZvJG0m/GdVD6hIr1xyI/xNQsLq+6wDMnhklFPbIbDcm/TGSe5HcV1agCgIA+AHc/uYZJ+9qWwAAAABJRU5ErkJggg=="/>
+    <image id="cloud_highlight" x="4" y="5" width="19" height="14" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAOCAYAAADNGCeJAAAAwElEQVQ4jY2SAQ7CIAxFP5MryP2vJx5BDIZKte0+ZE0WWFfe7+9IvXdcidpwA/AueV18sGRtuM9VnhEl/0GauwQrGU92wIApkMICWEGN5W3QmdWGCojVFIBanBjs1Nk88ANF8bl2ZtPxrfLODgFKp7HUdUNAJ7GZG+Dkynd3aCVorctxYw+r4UYQuXPpUFDJ++FagBUbe33Xv6kgZ0GhQ9BeWPPd5QeMzsCANFzHYTRSlx6vby7OIHQgsCjo7AP4AG8/XlnsaLUsAAAAAElFTkSuQmCC"/>
+  </g>
+</svg>
