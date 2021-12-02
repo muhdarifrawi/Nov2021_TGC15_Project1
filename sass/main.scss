@@ -6,5 +6,9 @@ $primary:#ED820E;
     image-rendering: pixelated;
 }
 
+#map{
+    height:90vh;
+}
+
 // import bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap.scss"
