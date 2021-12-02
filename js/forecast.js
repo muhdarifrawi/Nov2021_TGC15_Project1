@@ -7,25 +7,28 @@ let weather2hResponse;
 let weather24hResponse;
 let weather4DayResponse;
 
+let today = new Date();
+let todayDate = today.getFullYear()+'-'+('0' + (today.getMonth()+1)).slice(-2)+'-'+('0' + today.getDate()).slice(-2);
+
 async function dataSet() {
     try {
       const response = await axios.all([
         axios.get(weather2h,
         {   
             params: { 
-                date:"2021-10-21"
+                date:todayDate
             }
         }),
         axios.get(weather24h,
         {   
             params: { 
-                date:"2021-10-21"
+                date:todayDate
             }
         }),
         axios.get(weather4day,
         {   
             params: { 
-                date:"2021-10-21"
+                date:todayDate
             }
         })
 
@@ -37,7 +40,7 @@ async function dataSet() {
       weather24hResponse = response[1]["data"];
       weather4DayResponse = response[2]["data"];
         
-      display24hForecastData();
+    //   display24hForecastData();
     } catch (error) {
       console.error(error);
       document.getElementById("content").innerHTML = `
