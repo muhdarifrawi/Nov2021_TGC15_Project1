@@ -1,8 +1,8 @@
-window.addEventListener('load', (event) => {
-    console.log('map triggered');
-    createMap();
+// window.addEventListener('load', (event) => {
+//     console.log('map triggered');
+//     createMap();
     
-  });
+//   });
 
 function createMap(){
     var map = L.map('map', {

@@ -4,8 +4,8 @@ const weather24h = baseURL + "/environment/24-hour-weather-forecast?";
 const weather4day= baseURL + "/environment/4-day-weather-forecast?";
 
 let weather2hResponse;
-let weather4hResponse;
 let weather24hResponse;
+let weather4DayResponse;
 
 async function dataSet() {
     try {
@@ -35,7 +35,7 @@ async function dataSet() {
 
       weather2hResponse = response[0]["data"];
       weather24hResponse = response[1]["data"];
-      weather4hResponse = response[2]["data"];
+      weather4DayResponse = response[2]["data"];
         
       display24hForecastData();
     } catch (error) {
