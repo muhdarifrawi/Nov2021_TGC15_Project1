@@ -1,4 +1,4 @@
-.weather-img { height: 90%; -ms-interpolation-mode: nearest-neighbor; image-rendering: -webkit-optimize-contrast; image-rendering: -moz-crisp-edges; image-rendering: -o-pixelated; image-rendering: pixelated; }
+.weather-img { width: 90%; -ms-interpolation-mode: nearest-neighbor; image-rendering: -webkit-optimize-contrast; image-rendering: -moz-crisp-edges; image-rendering: -o-pixelated; image-rendering: pixelated; }
 
 #map { height: 90vh; position: relative; z-index: 1; }
 

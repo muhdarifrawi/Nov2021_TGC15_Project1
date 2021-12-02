@@ -4,7 +4,7 @@ window.addEventListener('load', (event) => {
     console.log('script triggered');
     defaultActiveNav();
     createMap();
-    fourDayForecast();
+    // fourDayForecast();
   });
 
 function defaultActiveNav(){
@@ -43,5 +43,7 @@ function fourDayForecast(){
     
     document.getElementById("content").appendChild(overlay);  
     overlay.appendChild(weatherCards);
+
+    
 
 }

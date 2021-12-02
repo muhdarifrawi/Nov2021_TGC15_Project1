@@ -39,7 +39,8 @@ async function dataSet() {
       weather2hResponse = response[0]["data"];
       weather24hResponse = response[1]["data"];
       weather4DayResponse = response[2]["data"];
-        
+      display4dayForecast()
+
     //   display24hForecastData();
     } catch (error) {
       console.error(error);
@@ -133,6 +134,37 @@ function display24hForecastData(){
   
 }
 
+function display4dayForecast(){
+    // let forecast4day = weather4DayResponse;
+    let forecast4day = weather4DayResponse["items"][0]["forecasts"];
+
+    console.log(forecast4day);
+
+    // for(i=0;i<forecast4day.length;i++){
+    //     console.log(forecast4day[i])
+    // }
+
+    let overlay = document.createElement("div");
+    overlay.className = "map-overlay"
+    let weatherCards = document.createElement("div");
+    weatherCards.className = "row d-flex justify-content-evenly";
+
+    for(i=0;i<forecast4day.length;i++){
+        weatherCards.innerHTML += `
+            <div class="card" style="width: 18rem;">
+                <img src="images/icons_png/fair_night.png" class="card-img-top p-3 weather-img" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">${forecast4day[i]["date"]}</h5>
+                <p class="card-text">${forecast4day[i]["forecast"]}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        `;
+    }
+    
+    document.getElementById("content").appendChild(overlay);  
+    overlay.appendChild(weatherCards);
+}
 
 
 
