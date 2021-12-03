@@ -47,3 +47,12 @@ function fourDayForecast(){
     
 
 }
+
+function dateTranslation(fullDate){
+    let mthArray = ["January", "February", "March", "April","May","June","July","August","September","October","November","December"]
+    let date = fullDate.slice(9,10)
+    let month = mthArray[parseInt(fullDate.slice(5,7))-1]
+    let year = fullDate.slice(0,4)
+    let translated = date + " " + month + " " + year
+    return(translated);
+}

@@ -154,7 +154,7 @@ function display4dayForecast(){
             <div class="card" style="width: 18rem;">
                 <img src="images/icons_png/fair_night.png" class="card-img-top p-3 weather-img" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">${forecast4day[i]["date"]}</h5>
+                <h5 class="card-title">${dateTranslation(forecast4day[i]["date"])}</h5>
                 <p class="card-text">${forecast4day[i]["forecast"]}</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
