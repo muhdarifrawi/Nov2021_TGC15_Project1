@@ -2,7 +2,7 @@
 
 #map { height: 90vh; position: relative; z-index: 1; }
 
-#content { position: relative; }
+#content { position: relative; top: 6vh; }
 
 .map-overlay { position: absolute; top: 300px; z-index: 2; width: 99%; }
 

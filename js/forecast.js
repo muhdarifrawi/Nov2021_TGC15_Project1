@@ -39,9 +39,9 @@ async function dataSet() {
       weather2hResponse = response[0]["data"];
       weather24hResponse = response[1]["data"];
       weather4DayResponse = response[2]["data"];
-      display4dayForecast()
-
+    //   display4dayForecast();
     //   display24hForecastData();
+      display2hForecastData();
     } catch (error) {
       console.error(error);
       document.getElementById("content").innerHTML = `
@@ -51,33 +51,47 @@ async function dataSet() {
     }
   }
 
-
-
-
-dataSet();
-
 function display2hForecastData(){
+    document.getElementsByClassName("navbar-brand")[0].innerText = "Weather Tracking | 2-Hourly Forecast";
     let forecasts = weather2hResponse["items"][1]["forecasts"];
 
-    document.getElementById("content").innerHTML = `<h1>${forecasts.length} results found</h1>`;
-    console.log(forecasts);
     for(i=0;i<forecasts.length;i++){
         let locationNames = forecasts[i]["area"]
 
         let location = weather2hResponse["area_metadata"];
         const locationResult = location.find( ({ name }) => name === locationNames );
-        console.log(locationResult["name"]);
-        console.log(locationResult["label_location"]["longitude"],locationResult["label_location"]["latitude"]);
     
         let locationInfo = weather2hResponse["items"][1]["forecasts"];
         const locationInfoResult = locationInfo.find( ({area}) => area === locationNames);
-        console.log(locationInfoResult);
+
+        var weatherIcons = L.icon({
+            iconUrl: "images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+            iconSize: [30,20],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
+            shadowUrl: "images/icons_shadow_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+            shadowSize: [35, 25],
+            shadowAnchor: [22, 94]
+        });
+
+        var popUpInfo = `
+        <div class="container">
+                <h5 class="pb-0 mb-1 fw-bold">${locationInfoResult["area"]}</h5>
+                <p class="my-0 fs-5">${locationInfoResult["forecast"]}</p>
+                <a href="#" class="link-primary">Historical Data...</a>
+        </div>
+        `
+
+        L.marker([locationResult["label_location"]["latitude"],locationResult["label_location"]["longitude"]],{icon:weatherIcons})
+        .bindPopup(popUpInfo)
+        .addTo(map);
     }
 
   
 }
 
 function display24hForecastData(){
+    document.getElementsByClassName("navbar-brand")[0].innerText = "Weather Tracking | 24-Hourly Forecast";
     let forecasts24h = weather24hResponse["items"];
 
     
@@ -135,7 +149,7 @@ function display24hForecastData(){
 }
 
 function display4dayForecast(){
-    
+    document.getElementsByClassName("navbar-brand")[0].innerText = "Weather Tracking | 4-Day Forecast";
     let forecast4day = weather4DayResponse["items"][0]["forecasts"];
 
     let overlay = document.createElement("div");
@@ -152,7 +166,7 @@ function display4dayForecast(){
                 <div class="card-body">
                 <h5 class="card-title fs-3 fw-bold">${dateTranslation(forecast4day[i]["date"])}</h5>
                 <p class="card-text">${forecast4day[i]["forecast"]}</p>
-                <a href="#" class="link">Go somewhere</a>
+                <a href="#" class="link-primary">Go somewhere</a>
                 </div>
             </div>
         `;

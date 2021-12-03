@@ -3,6 +3,7 @@ let navLink = document.getElementsByClassName("nav-link");
 window.addEventListener('load', (event) => {
     console.log('script triggered');
     defaultActiveNav();
+    dataSet();
     createMap();
     // fourDayForecast();
   });
