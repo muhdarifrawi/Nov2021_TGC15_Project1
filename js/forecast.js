@@ -135,14 +135,8 @@ function display24hForecastData(){
 }
 
 function display4dayForecast(){
-    // let forecast4day = weather4DayResponse;
+    
     let forecast4day = weather4DayResponse["items"][0]["forecasts"];
-
-    console.log(forecast4day);
-
-    // for(i=0;i<forecast4day.length;i++){
-    //     console.log(forecast4day[i])
-    // }
 
     let overlay = document.createElement("div");
     overlay.className = "map-overlay"
@@ -152,11 +146,13 @@ function display4dayForecast(){
     for(i=0;i<forecast4day.length;i++){
         weatherCards.innerHTML += `
             <div class="card" style="width: 18rem;">
-                <img src="images/icons_png/fair_night.png" class="card-img-top p-3 weather-img" alt="...">
+                <div id="weather-img-container" class="d-flex align-items-center">
+                <img src="images/icons_png/${imagePicker(forecast4day[i]["forecast"])}.png" class="card-img-top p-3 weather-img" alt="...">
+                </div>
                 <div class="card-body">
-                <h5 class="card-title">${dateTranslation(forecast4day[i]["date"])}</h5>
+                <h5 class="card-title fs-3 fw-bold">${dateTranslation(forecast4day[i]["date"])}</h5>
                 <p class="card-text">${forecast4day[i]["forecast"]}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="link">Go somewhere</a>
                 </div>
             </div>
         `;
