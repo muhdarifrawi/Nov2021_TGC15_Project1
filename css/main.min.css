@@ -4,7 +4,9 @@
 
 #content { position: relative; top: 6vh; }
 
-.map-overlay { position: absolute; top: 300px; z-index: 2; width: 99%; }
+#overlay-container { height: 100%; position: absolute; top: 0; z-index: 2; }
+
+#map-overlay, #weather-navigator { position: relative; width: 100%; }
 
 #weather-img-container { height: 25vh; }
 

@@ -92,39 +92,72 @@ function display2hForecastData(){
 
 function display24hForecastData(){
     document.getElementsByClassName("navbar-brand")[0].innerText = "Weather Tracking | 24-Hourly Forecast";
-
+    let overlayContainer = document.createElement("div");
+    overlayContainer.id = "overlay-container"
+    overlayContainer.className="container-fluid d-flex align-items-center justify-content-evenly flex-column";
+    document.getElementById("content").appendChild(overlayContainer);
+    
     let overlay = document.createElement("div");
-    overlay.className = "map-overlay"
-    let weatherCards = document.createElement("div");
-    weatherCards.className = "row d-flex justify-content-evenly";
-    weatherCards.innerHTML = `
-    <div class="card" style="width: 18rem;">
-        <img src="images/icons_png/cloudy.png" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text" id="weather info">${currentPage}</p>
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link"href="#"></a>
-                </li>
-                <li class="page-item">
-                    <a class="page-link" id ="nextPg" href="#">Next</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    `;
-    document.getElementById("content").appendChild(overlay);  
-    overlay.appendChild(weatherCards);
+    overlay.id = "map-overlay"
+    overlay.className = "row d-flex flex-row justify-content-evenly"
+    document.getElementById("overlay-container").appendChild(overlay);
 
-    document.getElementById("prevPg").addEventListener("click", prevPage);
-    document.getElementById("nextPg").addEventListener("click", nextPage);
+    let navigator = document.createElement("div");
+    navigator.id = "weather-navigator"
+    navigator.className = "d-flex align-items-center justify-content-evenly flex-column";
+    navigator.innerHTML = `
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link"href="#"></a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" id="nextPg" href="#">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    `;
+    document.getElementById("overlay-container").appendChild(navigator);
+
+    // overlay.appendChild(weatherCards);
+    // let overlay = document.createElement("div");
+    // overlay.className = "map-overlay"
+    // let weatherCards = document.createElement("div");
+    // weatherCards.className = "row d-flex justify-content-evenly";
+    // weatherCards.innerHTML = `
+    // <div class="card" style="width: 18rem;">
+    //     <img src="images/icons_png/cloudy.png" class="card-img-top" alt="...">
+    //     <div class="card-body">
+    //         <h5 class="card-title">Card title</h5>
+    //         <p class="card-text" id="weather info">${currentPage}</p>
+    //         <ul class="pagination justify-content-center">
+    //             <li class="page-item disabled">
+    //                 <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    //             </li>
+    //             <li class="page-item">
+    //                 <a class="page-link"href="#"></a>
+    //             </li>
+    //             <li class="page-item">
+    //                 <a class="page-link" id ="nextPg" href="#">Next</a>
+    //             </li>
+    //         </ul>
+    //     </div>
+    // </div>
+    // `;
+    // document.getElementById("content").appendChild(overlay);  
+    // overlay.appendChild(weatherCards);
+
+    // document.getElementById("prevPg").addEventListener("click", prevPage);
+    // document.getElementById("nextPg").addEventListener("click", nextPage);
 
     get24hForecast();
-    
+    document.getElementById("prevPg").addEventListener("click", prevPage);
+    document.getElementById("nextPg").addEventListener("click", nextPage);
 
         // var weatherIcons = L.icon({
         //     iconUrl: "images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
@@ -163,56 +196,82 @@ function get24hForecast(){
 
     // document.getElementById("content").innerHTML = `<h1>${forecasts.length} results found</h1>`;
     console.log(forecasts24h.length);
-    for(i=0;i<forecasts24h.length;i++){
 
-        // general data
-        let general = forecasts24h[i]["general"];
-        console.log(general);
-        
-
-        let generalForecast = general["forecast"];
-        let generalRelativeHumidityLow = general["relative_humidity"]["low"];
-        let generalRelativeHumidityHigh = general["relative_humidity"]["high"];
-        let generalTemperatureLow = general["temperature"]["low"];
-        let generalTemperatureHigh = general["temperature"]["high"];
-        let generalWindSpeedLow = general["wind"]["speed"]["low"];
-        let generalWindSpeedHigh = general["wind"]["speed"]["high"];
-        // ISSUE: wind direction outputs as VARIABLE
-        let generalWindDirection = general["wind"]["direction"];
-        console.log(generalWindDirection);
-        
-        console.log(
-            generalForecast,
-            generalRelativeHumidityHigh,
-            generalRelativeHumidityLow,
-            generalTemperatureHigh,
-            generalTemperatureLow,
-            generalWindSpeedHigh,
-            generalWindSpeedLow
-        );
-        
+    // general data
+    let i = 0;
+    let general = forecasts24h[i]["general"];
+    console.log(general);
     
+
+    let generalForecast = general["forecast"];
+    let generalRelativeHumidityLow = general["relative_humidity"]["low"];
+    let generalRelativeHumidityHigh = general["relative_humidity"]["high"];
+    let generalTemperatureLow = general["temperature"]["low"];
+    let generalTemperatureHigh = general["temperature"]["high"];
+    let generalWindSpeedLow = general["wind"]["speed"]["low"];
+    let generalWindSpeedHigh = general["wind"]["speed"]["high"];
+    // ISSUE: wind direction outputs as VARIABLE
+    let generalWindDirection = general["wind"]["direction"];
+    console.log(generalWindDirection);
+    
+    console.log(
+        generalForecast,
+        generalRelativeHumidityHigh,
+        generalRelativeHumidityLow,
+        generalTemperatureHigh,
+        generalTemperatureLow,
+        generalWindSpeedHigh,
+        generalWindSpeedLow
+    );
+    
+
+    
+    // periods data
+
+    Weather24hPages = forecasts24h[i]["periods"].length;
+    let j = currentPage - 1;
+
+    let timeStart = forecasts24h[i]["periods"][j]["time"]["start"];
+    timeStart = new Date(timeStart).toLocaleTimeString('en',
+        { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
+
+    let timeEnd = forecasts24h[i]["periods"][j]["time"]["end"];
+    timeEnd = new Date(timeEnd).toLocaleTimeString('en',
+        { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
+    let regions= forecasts24h[i]["periods"][j]["regions"];
+
+    // let overlay = document.createElement("div");
+    // overlay.id = "map-overlay"
+    let overlay = document.getElementById("map-overlay");
+    // let weatherCards = document.createElement("div");
+    // weatherCards.className = "row d-flex justify-content-evenly";
+    // weatherCards.Id = "weather-cards"
+    // let weatherCards = document.getElementById("weather-cards");
+    if(overlay.innerHTML!=""){
+        overlay.innerHTML = "";
+    }
+    for (key in regions) {
+        console.log(`${key}: ${regions[key]}`);
+
         
-        // periods data
-
-        Weather24hPages = forecasts24h[i]["periods"].length;
-        let j = currentPage - 1;
-
-        let timeStart = forecasts24h[i]["periods"][j]["time"]["start"];
-        timeStart = new Date(timeStart).toLocaleTimeString('en',
-            { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
-
-        let timeEnd = forecasts24h[i]["periods"][j]["time"]["end"];
-        timeEnd = new Date(timeEnd).toLocaleTimeString('en',
-            { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
-        let regions= forecasts24h[i]["periods"][j]["regions"];
-        for (key in regions) {
-            console.log(`${key}: ${regions[key]}`);
-            }
-        // need to reflect date as well
-        console.log(timeStart, timeEnd);
+        overlay.innerHTML += `
+            <div class="card" style="width: 18rem;">
+                <img src="images/icons_png/cloudy.png" class="card-img-top p-3 weather-img" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${regions[key]}</h5>
+                    <p class="card-text" id="weather info">${key}</p>
+                </div>
+            </div>
+        `;
+        // document.getElementById("content").appendChild(overlay);  
+        // overlay.appendChild(weatherCards);
         
     }
+    // overlayContainer.appendChild(weatherCards);
+    // need to reflect date as well
+    console.log(timeStart, timeEnd);
+        
+    
 }
 
 function display4dayForecast(){
