@@ -99,15 +99,16 @@ function display24hForecastData(){
     
     let overlay = document.createElement("div");
     overlay.id = "map-overlay"
-    overlay.className = "row d-flex flex-row justify-content-evenly"
+    overlay.className = "row d-flex flex-row-reverse justify-content-evenly"
     document.getElementById("overlay-container").appendChild(overlay);
 
     let navigator = document.createElement("div");
     navigator.id = "weather-navigator"
     navigator.className = "d-flex align-items-center justify-content-evenly flex-column";
     navigator.innerHTML = `
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 24rem;">
             <div class="card-body">
+                <h5 class="card-title" id="weather-time"></h5>
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
                         <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -123,37 +124,6 @@ function display24hForecastData(){
         </div>
     `;
     document.getElementById("overlay-container").appendChild(navigator);
-
-    // overlay.appendChild(weatherCards);
-    // let overlay = document.createElement("div");
-    // overlay.className = "map-overlay"
-    // let weatherCards = document.createElement("div");
-    // weatherCards.className = "row d-flex justify-content-evenly";
-    // weatherCards.innerHTML = `
-    // <div class="card" style="width: 18rem;">
-    //     <img src="images/icons_png/cloudy.png" class="card-img-top" alt="...">
-    //     <div class="card-body">
-    //         <h5 class="card-title">Card title</h5>
-    //         <p class="card-text" id="weather info">${currentPage}</p>
-    //         <ul class="pagination justify-content-center">
-    //             <li class="page-item disabled">
-    //                 <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-    //             </li>
-    //             <li class="page-item">
-    //                 <a class="page-link"href="#"></a>
-    //             </li>
-    //             <li class="page-item">
-    //                 <a class="page-link" id ="nextPg" href="#">Next</a>
-    //             </li>
-    //         </ul>
-    //     </div>
-    // </div>
-    // `;
-    // document.getElementById("content").appendChild(overlay);  
-    // overlay.appendChild(weatherCards);
-
-    // document.getElementById("prevPg").addEventListener("click", prevPage);
-    // document.getElementById("nextPg").addEventListener("click", nextPage);
 
     get24hForecast();
     document.getElementById("prevPg").addEventListener("click", prevPage);
@@ -230,23 +200,24 @@ function get24hForecast(){
 
     Weather24hPages = forecasts24h[i]["periods"].length;
     let j = currentPage - 1;
+    
+    let fullTime = forecasts24h[i]["periods"][j]["time"]["start"];
 
-    let timeStart = forecasts24h[i]["periods"][j]["time"]["start"];
-    timeStart = new Date(timeStart).toLocaleTimeString('en',
+    let timeStart = new Date(fullTime).toLocaleTimeString('en',
         { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
 
-    let timeEnd = forecasts24h[i]["periods"][j]["time"]["end"];
-    timeEnd = new Date(timeEnd).toLocaleTimeString('en',
+    let dateStart = new Date(fullTime).toLocaleDateString('en',
+        { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    let timeEnd = new Date(fullTime).toLocaleTimeString('en',
         { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
+
+    let dateEnd = new Date(fullTime).toLocaleDateString('en',
+        { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
     let regions= forecasts24h[i]["periods"][j]["regions"];
 
-    // let overlay = document.createElement("div");
-    // overlay.id = "map-overlay"
     let overlay = document.getElementById("map-overlay");
-    // let weatherCards = document.createElement("div");
-    // weatherCards.className = "row d-flex justify-content-evenly";
-    // weatherCards.Id = "weather-cards"
-    // let weatherCards = document.getElementById("weather-cards");
     if(overlay.innerHTML!=""){
         overlay.innerHTML = "";
     }
@@ -256,18 +227,25 @@ function get24hForecast(){
         
         overlay.innerHTML += `
             <div class="card" style="width: 18rem;">
-                <img src="images/icons_png/cloudy.png" class="card-img-top p-3 weather-img" alt="...">
+                <img src="images/icons_png/${imagePicker(regions[key])}.png" class="card-img-top p-3 weather-img" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">${regions[key]}</h5>
-                    <p class="card-text" id="weather info">${key}</p>
+                    <h5 class="card-title">${key.toUpperCase()}</h5>
+                    <p class="card-text" id="weather info">${regions[key]}</p>
                 </div>
             </div>
         `;
-        // document.getElementById("content").appendChild(overlay);  
-        // overlay.appendChild(weatherCards);
+
         
     }
-    // overlayContainer.appendChild(weatherCards);
+
+    let weatherTime = document.getElementById("weather-time");
+    weatherTime.innerHTML = `
+    <span class="fs-3 py-3">From:</span><br/>
+    ${dateStart} ${timeStart} 
+    <span class="fs-3 py-3">To:</span><br/>
+    ${dateEnd} ${timeEnd}
+    `
+    
     // need to reflect date as well
     console.log(timeStart, timeEnd);
         
