@@ -102,7 +102,7 @@ function display24hForecastData(){
         <img src="images/icons_png/cloudy.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text" id="weather info">${currentPage}</p>
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
                     <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -123,6 +123,40 @@ function display24hForecastData(){
     document.getElementById("prevPg").addEventListener("click", prevPage);
     document.getElementById("nextPg").addEventListener("click", nextPage);
 
+    get24hForecast();
+    
+
+        // var weatherIcons = L.icon({
+        //     iconUrl: "images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+        //     iconSize: [30,20],
+        //     iconAnchor: [22, 94],
+        //     popupAnchor: [-3, -76],
+        //     shadowUrl: "images/icons_shadow_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+        //     shadowSize: [35, 25],
+        //     shadowAnchor: [22, 94]
+        // });
+
+        // var popUpInfo = `
+        // <div class="container">
+        //         <h5 class="pb-0 mb-1 fw-bold">${locationInfoResult["area"]}</h5>
+        //         <p class="my-0 fs-5">${locationInfoResult["forecast"]}</p>
+        //         <a href="#" class="link-primary">Historical Data...</a>
+        // </div>
+        // `
+
+        // L.marker([locationResult["label_location"]["latitude"],locationResult["label_location"]["longitude"]],{icon:weatherIcons})
+        // .bindPopup(popUpInfo)
+        // .addTo(map);
+
+        
+
+
+    
+
+  
+}
+
+function get24hForecast(){
     let forecasts24h = weather24hResponse["items"];
     console.log(forecasts24h);
     
@@ -133,7 +167,7 @@ function display24hForecastData(){
 
         // general data
         let general = forecasts24h[i]["general"];
-        console.log(i);
+        console.log(general);
         
 
         let generalForecast = general["forecast"];
@@ -162,50 +196,23 @@ function display24hForecastData(){
         // periods data
 
         Weather24hPages = forecasts24h[i]["periods"].length;
-        for(j=0;j<forecasts24h[i]["periods"].length;j++){
-            let timeStart = forecasts24h[i]["periods"][j]["time"]["start"];
-            timeStart = new Date(timeStart).toLocaleTimeString('en',
-                { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
+        let j = currentPage - 1;
 
-            let timeEnd = forecasts24h[i]["periods"][j]["time"]["end"];
-            timeEnd = new Date(timeEnd).toLocaleTimeString('en',
-                { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
-            let regions= forecasts24h[i]["periods"][j]["regions"];
-            for (key in regions) {
-                console.log(`${key}: ${regions[key]}`);
-              }
-            // need to reflect date as well
-            console.log(timeStart, timeEnd);
-        }
+        let timeStart = forecasts24h[i]["periods"][j]["time"]["start"];
+        timeStart = new Date(timeStart).toLocaleTimeString('en',
+            { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
 
-        // var weatherIcons = L.icon({
-        //     iconUrl: "images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
-        //     iconSize: [30,20],
-        //     iconAnchor: [22, 94],
-        //     popupAnchor: [-3, -76],
-        //     shadowUrl: "images/icons_shadow_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
-        //     shadowSize: [35, 25],
-        //     shadowAnchor: [22, 94]
-        // });
-
-        // var popUpInfo = `
-        // <div class="container">
-        //         <h5 class="pb-0 mb-1 fw-bold">${locationInfoResult["area"]}</h5>
-        //         <p class="my-0 fs-5">${locationInfoResult["forecast"]}</p>
-        //         <a href="#" class="link-primary">Historical Data...</a>
-        // </div>
-        // `
-
-        // L.marker([locationResult["label_location"]["latitude"],locationResult["label_location"]["longitude"]],{icon:weatherIcons})
-        // .bindPopup(popUpInfo)
-        // .addTo(map);
-
+        let timeEnd = forecasts24h[i]["periods"][j]["time"]["end"];
+        timeEnd = new Date(timeEnd).toLocaleTimeString('en',
+            { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
+        let regions= forecasts24h[i]["periods"][j]["regions"];
+        for (key in regions) {
+            console.log(`${key}: ${regions[key]}`);
+            }
+        // need to reflect date as well
+        console.log(timeStart, timeEnd);
         
-
-
     }
-
-  
 }
 
 function display4dayForecast(){

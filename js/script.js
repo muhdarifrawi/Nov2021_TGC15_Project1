@@ -133,6 +133,7 @@ function cyclePageButton(t){
         document.getElementById("prevPg").setAttribute("tabindex",-1)
         document.getElementById("prevPg").setAttribute("aria-disabled",true)
         document.getElementById("prevPg").closest("li").setAttribute("class","page-item disabled")
+        get24hForecast();
     }
     
     // if page is between one and max
@@ -143,12 +144,14 @@ function cyclePageButton(t){
         document.getElementById("nextPg").setAttribute("tabindex",1)
         document.getElementById("nextPg").setAttribute("aria-disabled",false)
         document.getElementById("nextPg").closest("li").setAttribute("class","page-item")
+        get24hForecast();
     }
     // if page is max
     else if(currentPage == Weather24hPages){
         document.getElementById("nextPg").setAttribute("tabindex",-1)
         document.getElementById("nextPg").setAttribute("aria-disabled",true)
         document.getElementById("nextPg").closest("li").setAttribute("class","page-item disabled")
+        get24hForecast();
     }
     else {
         console.log("pagination error.");
