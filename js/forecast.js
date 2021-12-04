@@ -40,8 +40,8 @@ async function dataSet() {
       weather24hResponse = response[1]["data"];
       weather4DayResponse = response[2]["data"];
     //   display4dayForecast();
-    //   display24hForecastData();
-      display2hForecastData();
+      display24hForecastData();
+    //   display2hForecastData();
     } catch (error) {
       console.error(error);
       document.getElementById("content").innerHTML = `
@@ -92,17 +92,48 @@ function display2hForecastData(){
 
 function display24hForecastData(){
     document.getElementsByClassName("navbar-brand")[0].innerText = "Weather Tracking | 24-Hourly Forecast";
-    let forecasts24h = weather24hResponse["items"];
 
+    let overlay = document.createElement("div");
+    overlay.className = "map-overlay"
+    let weatherCards = document.createElement("div");
+    weatherCards.className = "row d-flex justify-content-evenly";
+    weatherCards.innerHTML = `
+    <div class="card" style="width: 18rem;">
+        <img src="images/icons_png/cloudy.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link"href="#"></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" id ="nextPg" href="#">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    `;
+    document.getElementById("content").appendChild(overlay);  
+    overlay.appendChild(weatherCards);
+
+    document.getElementById("prevPg").addEventListener("click", prevPage);
+    document.getElementById("nextPg").addEventListener("click", nextPage);
+
+    let forecasts24h = weather24hResponse["items"];
+    console.log(forecasts24h);
     
 
     // document.getElementById("content").innerHTML = `<h1>${forecasts.length} results found</h1>`;
     console.log(forecasts24h.length);
     for(i=0;i<forecasts24h.length;i++){
-        // console.log(forecasts["items"][i]);
 
         // general data
-        let general = forecasts24h[0]["general"];
+        let general = forecasts24h[i]["general"];
+        console.log(i);
         
 
         let generalForecast = general["forecast"];
@@ -126,7 +157,11 @@ function display24hForecastData(){
             generalWindSpeedLow
         );
         
+    
+        
         // periods data
+
+        Weather24hPages = forecasts24h[i]["periods"].length;
         for(j=0;j<forecasts24h[i]["periods"].length;j++){
             let timeStart = forecasts24h[i]["periods"][j]["time"]["start"];
             timeStart = new Date(timeStart).toLocaleTimeString('en',
@@ -139,8 +174,33 @@ function display24hForecastData(){
             for (key in regions) {
                 console.log(`${key}: ${regions[key]}`);
               }
+            // need to reflect date as well
             console.log(timeStart, timeEnd);
         }
+
+        // var weatherIcons = L.icon({
+        //     iconUrl: "images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+        //     iconSize: [30,20],
+        //     iconAnchor: [22, 94],
+        //     popupAnchor: [-3, -76],
+        //     shadowUrl: "images/icons_shadow_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+        //     shadowSize: [35, 25],
+        //     shadowAnchor: [22, 94]
+        // });
+
+        // var popUpInfo = `
+        // <div class="container">
+        //         <h5 class="pb-0 mb-1 fw-bold">${locationInfoResult["area"]}</h5>
+        //         <p class="my-0 fs-5">${locationInfoResult["forecast"]}</p>
+        //         <a href="#" class="link-primary">Historical Data...</a>
+        // </div>
+        // `
+
+        // L.marker([locationResult["label_location"]["latitude"],locationResult["label_location"]["longitude"]],{icon:weatherIcons})
+        // .bindPopup(popUpInfo)
+        // .addTo(map);
+
+        
 
 
     }

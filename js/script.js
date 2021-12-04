@@ -101,9 +101,63 @@ function imagePicker(info){
         return "heavy_thundery_showers";
     }
     else if(info.toLowerCase().search("heavy thundery showers with gusty winds") !=-1 ){
-        return "heavy_thindery_showers_with_gusty_winds";
+        return "heavy_thundery_showers_with_gusty_winds";
     }
     else{
         return "cloudy";
     }
+}
+
+map.on("click", function(e){ 
+    console.log(e.latlng);
+});
+
+let Weather24hPages = "";
+let currentPage = 1;
+
+function prevPage(){
+    currentPage -=1;
+    console.log("Prev");
+    cyclePageButton();
+}
+
+function nextPage(){
+    console.log("Next");
+    currentPage +=1;
+    console.log(currentPage);
+    cyclePageButton();
+}
+function cyclePageButton(t){
+    // if page == 1
+    if(currentPage==1){
+        document.getElementById("prevPg").setAttribute("tabindex",-1)
+        document.getElementById("prevPg").setAttribute("aria-disabled",true)
+        document.getElementById("prevPg").closest("li").setAttribute("class","page-item disabled")
+    }
+    
+    // if page is between one and max
+    else if(currentPage>1 && currentPage < Weather24hPages){
+        document.getElementById("prevPg").setAttribute("tabindex",1)
+        document.getElementById("prevPg").setAttribute("aria-disabled",false)
+        document.getElementById("prevPg").closest("li").setAttribute("class","page-item")
+        document.getElementById("nextPg").setAttribute("tabindex",1)
+        document.getElementById("nextPg").setAttribute("aria-disabled",false)
+        document.getElementById("nextPg").closest("li").setAttribute("class","page-item")
+    }
+    // if page is max
+    else if(currentPage == Weather24hPages){
+        document.getElementById("nextPg").setAttribute("tabindex",-1)
+        document.getElementById("nextPg").setAttribute("aria-disabled",true)
+        document.getElementById("nextPg").closest("li").setAttribute("class","page-item disabled")
+    }
+    else {
+        console.log("pagination error.");
+    }
+
+    
+    
+}
+
+function cycleWeatherInfo(event){
+    console.log(event.innerHTML);
 }
