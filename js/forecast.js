@@ -226,7 +226,7 @@ function get24hForecast(){
 
         
         overlay.innerHTML += `
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 12rem;">
                 <img src="images/icons_png/${imagePicker(regions[key])}.png" class="card-img-top p-3 weather-img" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${key.toUpperCase()}</h5>
