@@ -272,8 +272,13 @@ function display4dayForecast(){
     document.getElementsByClassName("navbar-brand")[0].innerText = "Weather Tracking | 4-Day Forecast";
     let forecast4day = weather4DayResponse["items"][0]["forecasts"];
 
+    let overlayContainer = document.createElement("div");
+    overlayContainer.id = "overlay-container"
+    overlayContainer.className="container-fluid d-flex align-items-center justify-content-evenly flex-column";
+    document.getElementById("content").appendChild(overlayContainer);
+
     let overlay = document.createElement("div");
-    overlay.className = "map-overlay"
+    overlay.id = "map-overlay"
     let weatherCards = document.createElement("div");
     weatherCards.className = "row d-flex justify-content-evenly";
 
@@ -292,7 +297,7 @@ function display4dayForecast(){
         `;
     }
     
-    document.getElementById("content").appendChild(overlay);  
+    document.getElementById("overlay-container").appendChild(overlay);  
     overlay.appendChild(weatherCards);
 }
 
