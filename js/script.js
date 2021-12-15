@@ -132,7 +132,7 @@ function cyclePageButton(t){
     if(currentPage==1){
         document.getElementById("prevPg").setAttribute("tabindex",-1)
         document.getElementById("prevPg").setAttribute("aria-disabled",true)
-        document.getElementById("prevPg").closest("li").setAttribute("class","page-item disabled")
+        document.getElementById("prevPg").closest("li").setAttribute("class","page-item disabled mx-2")
         get24hForecast();
     }
     
@@ -140,17 +140,17 @@ function cyclePageButton(t){
     else if(currentPage>1 && currentPage < Weather24hPages){
         document.getElementById("prevPg").setAttribute("tabindex",1)
         document.getElementById("prevPg").setAttribute("aria-disabled",false)
-        document.getElementById("prevPg").closest("li").setAttribute("class","page-item")
+        document.getElementById("prevPg").closest("li").setAttribute("class","page-item mx-2")
         document.getElementById("nextPg").setAttribute("tabindex",1)
         document.getElementById("nextPg").setAttribute("aria-disabled",false)
-        document.getElementById("nextPg").closest("li").setAttribute("class","page-item")
+        document.getElementById("nextPg").closest("li").setAttribute("class","page-item mx-2")
         get24hForecast();
     }
     // if page is max
     else if(currentPage == Weather24hPages){
         document.getElementById("nextPg").setAttribute("tabindex",-1)
         document.getElementById("nextPg").setAttribute("aria-disabled",true)
-        document.getElementById("nextPg").closest("li").setAttribute("class","page-item disabled")
+        document.getElementById("nextPg").closest("li").setAttribute("class","page-item disabled mx-2")
         get24hForecast();
     }
     else {

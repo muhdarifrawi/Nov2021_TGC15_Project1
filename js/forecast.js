@@ -122,17 +122,15 @@ function display24hForecastData(){
     navigator.id = "weather-navigator"
     navigator.className = "d-flex align-items-center justify-content-evenly flex-column";
     navigator.innerHTML = `
-        <div class="card" style="width: 24rem;">
+        <div class="card" style="width: 25vw;">
             <div class="card-body">
                 <h5 class="card-title" id="weather-time"></h5>
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
+                    <li class="page-item disabled mx-2">
                         <a class="page-link" id="prevPg" href="#" tabindex="-1" aria-disabled="true">Previous</a>
                     </li>
-                    <li class="page-item">
-                        <a class="page-link"href="#"></a>
-                    </li>
-                    <li class="page-item">
+                    
+                    <li class="page-item mx-2">
                         <a class="page-link" id="nextPg" href="#">Next</a>
                     </li>
                 </ul>
@@ -257,9 +255,9 @@ function get24hForecast(){
     let weatherTime = document.getElementById("weather-time");
     weatherTime.innerHTML = `
     <span class="fs-3 py-3">From:</span><br/>
-    ${dateStart} ${timeStart} 
+    <p>${dateStart} ${timeStart}</p>
     <span class="fs-3 py-3">To:</span><br/>
-    ${dateEnd} ${timeEnd}
+    <p>${dateEnd} ${timeEnd}</p>
     `
     
     // need to reflect date as well
