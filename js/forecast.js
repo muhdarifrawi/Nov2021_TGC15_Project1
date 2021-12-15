@@ -62,7 +62,7 @@ async function dataSet() {
     } catch (error) {
       console.error(error);
       document.getElementById("content").innerHTML = `
-      <div class="alert alert-danger" role="alert">
+      <div class="alert alert-danger m-4" role="alert">
         Error fetching data.
       </div>`;
     }
@@ -216,18 +216,19 @@ function get24hForecast(){
     Weather24hPages = forecasts24h[i]["periods"].length;
     let j = currentPage - 1;
     
-    let fullTime = forecasts24h[i]["periods"][j]["time"]["start"];
+    let fullTimeStart = forecasts24h[i]["periods"][j]["time"]["start"];
 
-    let timeStart = new Date(fullTime).toLocaleTimeString('en',
+    let timeStart = new Date(fullTimeStart).toLocaleTimeString('en',
         { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
 
-    let dateStart = new Date(fullTime).toLocaleDateString('en',
+    let dateStart = new Date(fullTimeStart).toLocaleDateString('en',
         { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-    let timeEnd = new Date(fullTime).toLocaleTimeString('en',
+    
+    let fullTimeEnd = forecasts24h[i]["periods"][j]["time"]["end"];
+    let timeEnd = new Date(fullTimeEnd).toLocaleTimeString('en',
         { timeStyle: 'short', hour12: true, timeZone: 'UTC' });
 
-    let dateEnd = new Date(fullTime).toLocaleDateString('en',
+    let dateEnd = new Date(fullTimeEnd).toLocaleDateString('en',
         { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
     let regions= forecasts24h[i]["periods"][j]["regions"];
