@@ -40,8 +40,24 @@ async function dataSet() {
       weather24hResponse = response[1]["data"];
       weather4DayResponse = response[2]["data"];
     //   display4dayForecast();
-      display24hForecastData();
+    //   display24hForecastData();
     //   display2hForecastData();
+    if(window.location.href.indexOf("index")>-1){
+        console.log("index");
+        display4dayForecast();
+    }
+    else if (window.location.href.indexOf("2h-forecast")>-1){
+        console.log("2h html");
+        display2hForecastData();
+    }
+    else if(window.location.href.indexOf("24h-forecast")>-1){
+        console.log("24h html");
+        display24hForecastData();
+    }
+    else{
+        console.log("could not find link");
+    }
+
     } catch (error) {
       console.error(error);
       document.getElementById("content").innerHTML = `
@@ -65,11 +81,11 @@ function display2hForecastData(){
         const locationInfoResult = locationInfo.find( ({area}) => area === locationNames);
 
         var weatherIcons = L.icon({
-            iconUrl: "images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+            iconUrl: "/images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
             iconSize: [30,20],
             iconAnchor: [22, 94],
             popupAnchor: [-3, -76],
-            shadowUrl: "images/icons_shadow_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
+            shadowUrl: "/images/icons_shadow_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
             shadowSize: [35, 25],
             shadowAnchor: [22, 94]
         });
@@ -227,7 +243,7 @@ function get24hForecast(){
         
         overlay.innerHTML += `
             <div class="card" style="width: 12rem;">
-                <img src="images/icons_png/${imagePicker(regions[key])}.png" class="card-img-top p-3 weather-img" alt="...">
+                <img src="/images/icons_png/${imagePicker(regions[key])}.png" class="card-img-top p-3 weather-img" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${key.toUpperCase()}</h5>
                     <p class="card-text" id="weather info">${regions[key]}</p>
