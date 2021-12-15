@@ -56,6 +56,7 @@ async function dataSet() {
     }
     else{
         console.log("could not find link");
+        display4dayForecast();
     }
 
     } catch (error) {
@@ -122,7 +123,7 @@ function display24hForecastData(){
     navigator.id = "weather-navigator"
     navigator.className = "d-flex align-items-center justify-content-evenly flex-column";
     navigator.innerHTML = `
-        <div class="card" style="width: 25vw;">
+        <div class="card bg-weathercard bg-opacity-75" style="width: 25vw;">
             <div class="card-body">
                 <h5 class="card-title" id="weather-time"></h5>
                 <ul class="pagination justify-content-center">
@@ -240,7 +241,7 @@ function get24hForecast(){
 
         
         overlay.innerHTML += `
-            <div class="card" style="width: 12rem;">
+            <div class="card bg-weathercard bg-opacity-75" style="width: 12rem;">
                 <img src="/images/icons_png/${imagePicker(regions[key])}.png" class="card-img-top p-3 weather-img" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${key.toUpperCase()}</h5>
@@ -282,14 +283,14 @@ function display4dayForecast(){
 
     for(i=0;i<forecast4day.length;i++){
         weatherCards.innerHTML += `
-            <div class="card" style="width: 18rem;">
+            <div class="card bg-weathercard bg-opacity-75" style="width: 18rem;">
                 <div id="weather-img-container" class="d-flex align-items-center">
                 <img src="images/icons_png/${imagePicker(forecast4day[i]["forecast"])}.png" class="card-img-top p-3 weather-img" alt="...">
                 </div>
                 <div class="card-body">
                 <h5 class="card-title fs-3 fw-bold">${dateTranslation(forecast4day[i]["date"])}</h5>
                 <p class="card-text">${forecast4day[i]["forecast"]}</p>
-                <a href="#" class="link-primary">Go somewhere</a>
+                <a href="#" class="link-primary">See Historical Data ...</a>
                 </div>
             </div>
         `;
