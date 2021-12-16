@@ -17,11 +17,11 @@ async function dataSet() {
         // console.log(historicalData);
         
         filterYearMth(historicalData,yearMthValue);   
-        displayHistoricalData(); 
+        // displayHistoricalData(); 
         
     } catch (error) {
       console.error(error);
-      document.getElementById("content").innerHTML = `
+      document.getElementById("chart-content").innerHTML = `
         <div class="alert alert-danger" role="alert">
           Error fetching data.
         </div>`;
@@ -42,7 +42,7 @@ function filterYearMth(data,ymVal){
 dataSet();
 
 function displayHistoricalData(){
-  document.getElementById("content").innerHTML = `<h1>${yearMth.length} results found</h1>`;
+  document.getElementById("chart-content").innerHTML = `<h1>${yearMth.length} results found</h1>`;
   for(i=0;i<yearMth.length;i++){
     document.getElementById("content").innerHTML += `
     <div class="card m-3" style="width: 30rem;">
@@ -63,3 +63,21 @@ function displayHistoricalData(){
   }
 
 }
+
+var options = {
+  chart: {
+    type: 'line',
+    height: "75%"
+  },
+  series: [{
+    name: 'sales',
+    data: [30,40,35,50,49,60,70,91,125]
+  }],
+  xaxis: {
+    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+  }
+}
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();

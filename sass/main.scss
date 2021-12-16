@@ -31,6 +31,10 @@ $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
     top:6vh;
 }
 
+#chart-content{
+    height:100vh;
+}
+
 #overlay-container{
     height:80%;
     position: absolute;
@@ -48,6 +52,16 @@ $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
 #weather-img-container{
     height:25vh;
 }
+#chart{
+    height:70%;
+}
+
+#chart-select{
+    height:5%;
+    width:100vw;
+}
+
+
 
 // import bootstrap
 @import "../node_modules/bootstrap/scss/bootstrap.scss"

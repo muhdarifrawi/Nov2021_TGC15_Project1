@@ -43,17 +43,52 @@
             </div>
         </div>
     </nav>
-    <div id="content">
-        <div id="map"></div>
+    <div id="chart-content" class="container-fluid d-flex flex-column justify-content-evenly ">
+        <div id="chart"></div>
+        <div id="chart-select" class="row d-flex justify-content-center">
+            <div class="col-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <select class="form-select" aria-label="Default select example">
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+        
+        </div>
         
     </div>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="node_modules/leaflet/dist/leaflet.js"></script>
-    <!-- <script src="js/history.js"></script> -->
-    <script src="js/forecast.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- <script src="/node_modules/leaflet/dist/leaflet.js"></script> -->
+    <script src="/js/history.js"></script>
+    <!-- <script src="/js/forecast.js"></script>
+    <script src="/js/map.js"></script> -->
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
