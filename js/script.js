@@ -3,8 +3,18 @@ let navLink = document.getElementsByClassName("nav-link");
 window.addEventListener('load', (event) => {
     console.log('script triggered');
     defaultActiveNav();
-    dataSet();
-    createMap();
+    if(window.location.href.indexOf("forecast")>-1 || window.location.href.indexOf("index")>-1){
+        forecastDataSet();
+        createMap();
+    }
+    else if(window.location.href.indexOf("historical")>-1){
+        historyDataSet();
+    }
+    else{
+
+    }
+    
+    
     // fourDayForecast();
   });
 

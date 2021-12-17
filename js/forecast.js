@@ -10,7 +10,7 @@ let weather4DayResponse;
 let today = new Date();
 let todayDate = today.getFullYear()+'-'+('0' + (today.getMonth()+1)).slice(-2)+'-'+('0' + today.getDate()).slice(-2);
 
-async function dataSet() {
+async function forecastDataSet() {
     try {
       const response = await axios.all([
         axios.get(weather2h,
