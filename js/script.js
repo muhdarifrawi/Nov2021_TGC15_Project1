@@ -1,7 +1,6 @@
 let navLink = document.getElementsByClassName("nav-link");
 
 window.addEventListener('load', (event) => {
-    console.log('script triggered');
     defaultActiveNav();
     if(window.location.href.indexOf("forecast")>-1 || window.location.href.indexOf("index")>-1){
         forecastDataSet();
@@ -13,9 +12,6 @@ window.addEventListener('load', (event) => {
     else{
 
     }
-    
-    
-    // fourDayForecast();
   });
 
 function defaultActiveNav(){
@@ -118,10 +114,6 @@ function imagePicker(info){
     }
 }
 
-map.on("click", function(e){ 
-    console.log(e.latlng);
-});
-
 let Weather24hPages = "";
 let currentPage = 1;
 
@@ -169,8 +161,4 @@ function cyclePageButton(t){
 
     
     
-}
-
-function cycleWeatherInfo(event){
-    console.log(event.innerHTML);
 }

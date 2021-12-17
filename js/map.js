@@ -1,8 +1,3 @@
-// window.addEventListener('load', (event) => {
-//     console.log('map triggered');
-//     createMap();
-    
-//   });
 var map = L.map('map', {
     center: [1.3521, 103.8198],
     zoom: 12

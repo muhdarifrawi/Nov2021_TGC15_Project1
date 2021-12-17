@@ -11,9 +11,6 @@ let mapTemperature;
 let mapWindspeed;
 
 window.addEventListener("load",function(){
-  
-  // document.getElementById("month").addEventListener("change",getMonth);
-  // document.getElementById("year").addEventListener("change",getYear);
   document.getElementById("search").addEventListener("click",historyDataSet);
 })
 
@@ -27,12 +24,8 @@ async function historyDataSet() {
             }
         })
         let historicalData = response.data.result.records;
-        // console.log(historicalData);
         yearMthValue = String(getYear() + "-" + getMonth());
-        // yearMthValue = "2010-07";
-        console.log("yearMthValue-> ",yearMthValue)
         filterYearMth(historicalData,yearMthValue);   
-        // displayHistoricalData(); 
         
     } catch (error) {
       console.error(error);
@@ -45,14 +38,12 @@ async function historyDataSet() {
 
 function getMonth(){
   mthValue = document.getElementById("month").value;
-  // console.log(mthValue);
 
   return mthValue;
 }
 
 function getYear(){
   yrValue = document.getElementById("year").value;
-  // console.log(yrValue);
   return yrValue;
 }
 
@@ -61,11 +52,9 @@ function filterYearMth(data,ymVal){
         if(i.date.slice(0,7)==ymVal){
             return i
         }
-        // return i.date
     })
 
     if(yearMth.length <= 0){
-      console.log("chart receive empty array.");
       document.getElementById("chart").innerHTML = `
       <div id="chart-alert" class="alert alert-info m-4" role="alert">
         Searched data may be missing or incomplete.
@@ -79,9 +68,7 @@ function filterYearMth(data,ymVal){
     }
     else{
       console.log("chart plotting error.");
-    }
-    // console.log("look here", yearMth);
-  
+    } 
   
 }   
 
@@ -111,7 +98,6 @@ function test(){
   let historicalDates = yearMth.map(function(x){
     return x["date"]
   });
-  console.log("here",historicalDates);
 }
 
 function mapDataset(){
@@ -142,8 +128,6 @@ function mapDataset(){
       return x["mean_wind_speed"]
     }
   })
-
-  console.log(mapDate, mapRainfall, mapTemperature, mapWindspeed);
   createChart();
 }
 

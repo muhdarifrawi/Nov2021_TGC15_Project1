@@ -44,8 +44,6 @@ $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
 
 #map-overlay, #weather-navigator{
     position: relative;
-    // top:300px;
-    // z-index:2;
     width:100%;
 }
 

@@ -34,24 +34,17 @@ async function forecastDataSet() {
 
       ])
 
-    //   console.log(response);
-
       weather2hResponse = response[0]["data"];
       weather24hResponse = response[1]["data"];
       weather4DayResponse = response[2]["data"];
-    //   display4dayForecast();
-    //   display24hForecastData();
-    //   display2hForecastData();
+
     if(window.location.href.indexOf("index")>-1){
-        console.log("index");
         display4dayForecast();
     }
     else if (window.location.href.indexOf("2h-forecast")>-1){
-        console.log("2h html");
         display2hForecastData();
     }
     else if(window.location.href.indexOf("24h-forecast")>-1){
-        console.log("24h html");
         display24hForecastData();
     }
     else{
@@ -144,72 +137,13 @@ function display24hForecastData(){
     document.getElementById("prevPg").addEventListener("click", prevPage);
     document.getElementById("nextPg").addEventListener("click", nextPage);
 
-        // var weatherIcons = L.icon({
-        //     iconUrl: "images/icons_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
-        //     iconSize: [30,20],
-        //     iconAnchor: [22, 94],
-        //     popupAnchor: [-3, -76],
-        //     shadowUrl: "images/icons_shadow_png/" + imagePicker(locationInfoResult["forecast"]) + ".png",
-        //     shadowSize: [35, 25],
-        //     shadowAnchor: [22, 94]
-        // });
-
-        // var popUpInfo = `
-        // <div class="container">
-        //         <h5 class="pb-0 mb-1 fw-bold">${locationInfoResult["area"]}</h5>
-        //         <p class="my-0 fs-5">${locationInfoResult["forecast"]}</p>
-        //         <a href="#" class="link-primary">Historical Data...</a>
-        // </div>
-        // `
-
-        // L.marker([locationResult["label_location"]["latitude"],locationResult["label_location"]["longitude"]],{icon:weatherIcons})
-        // .bindPopup(popUpInfo)
-        // .addTo(map);
-
-        
-
-
-    
-
-  
 }
 
 function get24hForecast(){
     let forecasts24h = weather24hResponse["items"];
-    console.log(forecasts24h);
-    
-
-    // document.getElementById("content").innerHTML = `<h1>${forecasts.length} results found</h1>`;
-    console.log(forecasts24h.length);
 
     // general data
     let i = 0;
-    let general = forecasts24h[i]["general"];
-    console.log(general);
-    
-
-    let generalForecast = general["forecast"];
-    let generalRelativeHumidityLow = general["relative_humidity"]["low"];
-    let generalRelativeHumidityHigh = general["relative_humidity"]["high"];
-    let generalTemperatureLow = general["temperature"]["low"];
-    let generalTemperatureHigh = general["temperature"]["high"];
-    let generalWindSpeedLow = general["wind"]["speed"]["low"];
-    let generalWindSpeedHigh = general["wind"]["speed"]["high"];
-    // ISSUE: wind direction outputs as VARIABLE
-    let generalWindDirection = general["wind"]["direction"];
-    console.log(generalWindDirection);
-    
-    console.log(
-        generalForecast,
-        generalRelativeHumidityHigh,
-        generalRelativeHumidityLow,
-        generalTemperatureHigh,
-        generalTemperatureLow,
-        generalWindSpeedHigh,
-        generalWindSpeedLow
-    );
-    
-
     
     // periods data
 
@@ -238,9 +172,7 @@ function get24hForecast(){
         overlay.innerHTML = "";
     }
     for (key in regions) {
-        console.log(`${key}: ${regions[key]}`);
 
-        
         overlay.innerHTML += `
             <div class="card bg-weathercard bg-opacity-75" style="width: 12rem;">
                 <img src="/images/icons_png/${imagePicker(regions[key])}.png" class="card-img-top p-3 weather-img" alt="...">
@@ -260,11 +192,7 @@ function get24hForecast(){
     <p>${dateStart} ${timeStart}</p>
     <span class="fs-3 py-3">To:</span><br/>
     <p>${dateEnd} ${timeEnd}</p>
-    `
-    
-    // need to reflect date as well
-    console.log(timeStart, timeEnd);
-        
+    `      
     
 }
 
