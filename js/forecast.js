@@ -95,7 +95,7 @@ function display2hForecastData(){
         <div class="container">
                 <h5 class="pb-0 mb-1 fw-bold">${locationInfoResult["area"]}</h5>
                 <p class="my-0 fs-5">${locationInfoResult["forecast"]}</p>
-                <a href="#" class="link-primary">Historical Data...</a>
+                <a href="/html/historical.html" class="link-primary">Historical Data...</a>
         </div>
         `
 
@@ -291,7 +291,7 @@ function display4dayForecast(){
                 <div class="card-body">
                 <h5 class="card-title fs-3 fw-bold">${dateTranslation(forecast4day[i]["date"])}</h5>
                 <p class="card-text">${forecast4day[i]["forecast"]}</p>
-                <a href="#" class="link-primary">See Historical Data ...</a>
+                <a href="/html/historical.html" class="link-primary">See Historical Data ...</a>
                 </div>
             </div>
         `;
