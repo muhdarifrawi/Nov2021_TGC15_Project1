@@ -1,7 +1,6 @@
 let navLink = document.getElementsByClassName("nav-link");
 
 window.addEventListener('load', (event) => {
-    defaultActiveNav();
     if(window.location.href.indexOf("forecast")>-1 || window.location.href.indexOf("index")>-1){
         forecastDataSet();
         createMap();
@@ -10,24 +9,9 @@ window.addEventListener('load', (event) => {
         historyDataSet();
     }
     else{
-
+        console.log("Unexpected URL read error.");
     }
   });
-
-function defaultActiveNav(){
-    document.getElementsByClassName("nav-link")[0].classList.add("active");
-    
-    for (let i = 0; i < navLink.length; i++) {
-        navLink[i].addEventListener('click', toggleActiveNav);
-    }
-}
-
-function toggleActiveNav(){
-    for (let i = 0; i < navLink.length; i++) {
-        navLink[i].classList.remove("active");
-    }
-    this.classList.add("active")
-}
 
 function dateTranslation(fullDate){
     let mthArray = ["January", "February", "March", "April","May","June","July","August","September","October","November","December"]
