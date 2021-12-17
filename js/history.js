@@ -3,8 +3,12 @@ const weatherHistory = "https://data.gov.sg/api/action/datastore_search?";
 let yearMthValue = "2010-06";
 
 let yearMth;
+let mapDate;
+let mapRainfall;
+let mapTemperature;
+let mapWindspeed;
 
-async function dataSet() {
+async function historyDataSet() {
     try {
       const response = await axios.get(weatherHistory,
         {   
@@ -36,7 +40,8 @@ function filterYearMth(data,ymVal){
         // return i.date
     })
     console.log("look here", yearMth);
-    
+  mapDataset();
+  
 }   
 
 dataSet();
@@ -65,47 +70,57 @@ function displayHistoricalData(){
 }
 
 function mapDataset(){
-  let mapDate = yearMth.map(function(x){
+  mapDate = yearMth.map(function(x){
     if(x["date"]){
-      return x["date"]
+      return x["date"].slice(-2)
     }
-  })
+  });
 
-  let mapRainfall = yearMth.map(function(x){
+
+  mapRainfall = yearMth.map(function(x){
     if(x["daily_rainfall_total"]){
       return x["daily_rainfall_total"]
     }
   })
 
-  let mapTemperature = yearMth.map(function(x){
+  mapTemperature = yearMth.map(function(x){
     if(x["mean_temperature"]){
       return x["mean_temperature"]
     }
-  })
+  });
 
-  let mapWindspeed = yearMth.map(function(x){
+  mapWindspeed = yearMth.map(function(x){
     if(x["mean_wind_speed"]){
       return x["mean_wind_speed"]
     }
   })
 
   console.log(mapDate, mapRainfall, mapTemperature, mapWindspeed);
+  createChart();
 }
 
-var options = {
-  chart: {
-    type: 'line',
-    height: "75%"
-  },
-  series: [{
-    name: 'sales',
-    data: [30,40,35,50,49,60,70,91,125]
-  }],
-  xaxis: {
-    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+function createChart(){
+  var options = {
+    chart: {
+      type: 'line',
+      height: "75%"
+    },
+    series: [{
+      name: 'Mean Temp',
+      data: mapTemperature
+    },
+      {
+        name: "Mean Rainfall",
+        data: mapRainfall
+      }
+    ],
+    xaxis: {
+      categories: mapDate
+    }
   }
+  
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  
+  chart.render();
 }
 
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-
-chart.render();
