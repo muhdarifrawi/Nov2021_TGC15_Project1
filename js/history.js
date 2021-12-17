@@ -64,6 +64,34 @@ function displayHistoricalData(){
 
 }
 
+function mapDataset(){
+  let mapDate = yearMth.map(function(x){
+    if(x["date"]){
+      return x["date"]
+    }
+  })
+
+  let mapRainfall = yearMth.map(function(x){
+    if(x["daily_rainfall_total"]){
+      return x["daily_rainfall_total"]
+    }
+  })
+
+  let mapTemperature = yearMth.map(function(x){
+    if(x["mean_temperature"]){
+      return x["mean_temperature"]
+    }
+  })
+
+  let mapWindspeed = yearMth.map(function(x){
+    if(x["mean_wind_speed"]){
+      return x["mean_wind_speed"]
+    }
+  })
+
+  console.log(mapDate, mapRainfall, mapTemperature, mapWindspeed);
+}
+
 var options = {
   chart: {
     type: 'line',
