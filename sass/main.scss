@@ -61,6 +61,15 @@ $utilities-bg-colors: map-loop($utilities-colors, rgba-css-var, "$key", "bg");
     width:100vw;
 }
 
+#about-content{
+    height:100vh;
+
+}
+
+#dev-photo{
+    height:40vh;
+}
+
 
 
 // import bootstrap
