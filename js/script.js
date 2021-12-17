@@ -9,6 +9,8 @@ window.addEventListener('load', (event) => {
         historyDataSet();
     }
     else{
+        forecastDataSet();
+        createMap();
         console.log("Unexpected URL read error.");
     }
   });
