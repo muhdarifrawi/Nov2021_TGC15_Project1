@@ -44,8 +44,6 @@ function filterYearMth(data,ymVal){
   
 }   
 
-dataSet();
-
 function displayHistoricalData(){
   document.getElementById("chart-content").innerHTML = `<h1>${yearMth.length} results found</h1>`;
   for(i=0;i<yearMth.length;i++){
@@ -107,16 +105,90 @@ function createChart(){
     },
     series: [{
       name: 'Mean Temp',
-      data: mapTemperature
+      data: mapTemperature,
+      type:"line",
     },
-      {
-        name: "Mean Rainfall",
-        data: mapRainfall
-      }
+    {
+      name: "Mean Rainfall",
+      data: mapRainfall,
+      type: "bar"
+    },
+    {
+      name: "Mean Wind Speed",
+      data: mapWindspeed,
+      type: "line"
+    }
     ],
     xaxis: {
       categories: mapDate
+    },
+    yaxis: [{
+      title: {
+        text: 'Mean Temp (°C)',
+        style:{
+          color:"#cd18d6"
+        }
+      },
+      axisTicks:{
+        show: true
+      },
+      axisBorder:{
+        show:true,
+        color:"#cd18d6"
+      }
+    
+    },
+    {
+      seriesName: "Mean Temp",
+      opposite: true,
+      title: {
+        text: 'Mean Wind Speed (km/h)',
+        style:{
+          color:"#18d64a"
+        }
+      },
+      axisTicks:{
+        show: true
+      },
+      axisBorder:{
+        show:true,
+        color:"#18d64a"
+      }
+    }, 
+    {
+      seriesName: "Mean Rainfall",
+      opposite: true,
+      title: {
+        text: 'Mean Rainfall (mm)',
+        style:{
+          color:"#186ad6"
+        }
+      },
+      axisTicks:{
+        show: true
+      },
+      axisBorder:{
+        show:true,
+        color:"#186ad6"
+      }
     }
+    
+    ],
+    dataLabels: {
+      enabled: true,
+      enabledOnSeries: [0]
+    },
+    colors:["#cd18d6","#186ad6","#18d64a"],
+    tooltip: {
+      fixed: {
+        enabled: true,
+        position: 'topLeft', 
+        offsetY: 30,
+        offsetX: 90
+      },
+    }
+    
+    
   }
   
   var chart = new ApexCharts(document.querySelector("#chart"), options);
