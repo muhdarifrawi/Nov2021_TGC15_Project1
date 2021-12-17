@@ -63,6 +63,12 @@ function displayHistoricalData(){
   }
 
 }
+function test(){
+  let historicalDates = yearMth.map(function(x){
+    return x["date"]
+  });
+  console.log("here",historicalDates);
+}
 
 var options = {
   chart: {
