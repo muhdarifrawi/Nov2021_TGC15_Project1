@@ -94,8 +94,9 @@ Testing was done manually. The detailed test document cane found here:
 [Testing sheet for Weather Forecating Website Nov 2021](readme-files/Nov2021_project1_tests.pdf)
 
 ## Deployment
-Deployment was done using GitHub pages. An step-by-step on deploying can be found in this document:
-[Deployment of Webpage Using GitHub Pages](readme-files/Deploying Webpage Using GitHub Pages.pdf)
+Deployment was done using Netlify. Followed the guided steps in deploying the webpage.
+
+[A Step-by-Step Guide: Deploying A Static Site or Single-page App](https://www.netlify.com/blog/2016/10/27/a-step-by-step-guide-deploying-a-static-site-or-single-page-app/)
 
 ## Errors found
 *Incomplete or missing historical data*
