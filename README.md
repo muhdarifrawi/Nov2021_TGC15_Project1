@@ -1,5 +1,9 @@
 # Weather Forecasting and Historical Data Search Website
 
+See the deployed website here:
+
+[https://dazzling-lichterman-9e0fe4.netlify.app/](https://dazzling-lichterman-9e0fe4.netlify.app/)
+
 ## Preface
 This webpage was created for users to be able to look at the predicted forecasts in Singapore. Additionally, there was an initial intention of creating an awareness in weather changes. Do take note that it was created for casual usage and not for professionally logging of weather data. 
 
