@@ -36,7 +36,7 @@ It would be detrimental to creating awareness if it was competing with other sit
 
 Research was done to see what datasets were available for public use. The intial scope of data was set to finding global historical datasets. That proved difficult to use and the ones that were found may take time to implement. Therefore, the focus was changed to use local datasets (Singapore).
 
-The found and unused datasets can be found in the ['Found Dataset Source' section]('#found-dataset-source') if anyone is interested. 
+The found and unused datasets can be found in the ['Found Dataset Source' section](#found-dataset-source) if anyone is interested. 
 
 ### The Scope
 *Functional Requirements*
@@ -82,8 +82,16 @@ Every page would have a navigation bar that would lead to each page. It would al
 
 The base color of the webpage was decided to be warm toned and pastel like. The end choice was to have a variation of the color orange as a base, a darker variation for the navigation bar and a lighter one for the weather cards. The charts were later on changed from the default colors to stand-out better from the base color.
 
+![color palette](readme-images/color_palette.jpg)
 
 
+## Testing 
+Testing was done manually. The detailed test document cane found here:
+[Testing sheet for Weather Forecating Website Nov 2021](readme-files/Nov2021_project1_tests.pdf)
+
+## Deployment
+Deployment was done using GitHub pages. An step-by-step on deploying can be found in this document:
+[Deployment of Webpage Using GitHub Pages](readme-files/Deploying Webpage Using GitHub Pages.pdf)
 
 ## Found Dataset Source
 - [Singapore 2-hour Weather Forecast](https://data.gov.sg/dataset/weather-forecast?resource_id=571ef5fb-ed31-48b2-85c9-61677de42ca9)
