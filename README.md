@@ -74,9 +74,9 @@ Pages would consist of the main page, a second page to show graph chart and a la
 
 Every page would have a navigation bar that would lead to each page. It would also have a selection for type of forecast.
 
-![page 1 layout](readme-images\page1.JPG)
-![page 2 layout](readme-images\page2.JPG)
-![page 3 layout](readme-images\page3.JPG)
+![page 1 layout](readme-images/page1.JPG)
+![page 2 layout](readme-images/page2.JPG)
+![page 3 layout](readme-images/page3.JPG)
 
 *Color Choice*
 
